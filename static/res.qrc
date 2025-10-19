@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/logo.png</file>
+        <file>images/faq.png</file>
+        <file>images/sort_up.png</file>
+        <file>images/sort_down.png</file>
+        <file>fonts/BravoRG.otf</file>
+    </qresource>
+</RCC>
