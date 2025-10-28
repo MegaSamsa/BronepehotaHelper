@@ -14,7 +14,10 @@
    <string>armyConstructWidget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#armyConstructWidget{background-color: lightgrey;}</string>
+   <string notr="true">#armyConstructWidget{background-color: lightgrey;}
+#FiltersFrame, #AllArmlistMainFrame, #UserArmlistMainFrame{
+border-radius: 5px;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
@@ -183,6 +186,9 @@
           <height>26</height>
          </size>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">border: None;</string>
         </property>
@@ -238,10 +244,10 @@
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>2</number>
       </property>
       <item>
        <widget class="QFrame" name="AllInfoLabelFrame">
@@ -322,8 +328,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>783</width>
-           <height>289</height>
+           <width>780</width>
+           <height>252</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="AllGridLayout">
@@ -383,10 +389,10 @@
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>2</number>
       </property>
       <item>
        <widget class="QFrame" name="UserInfoLabelFrame">
@@ -452,56 +458,52 @@
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="UserArmlistFrame">
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
+       <widget class="QScrollArea" name="UserScrollArea">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>250</height>
+         </size>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>500</height>
+         </size>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <property name="spacing">
-          <number>5</number>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>780</width>
+           <height>252</height>
+          </rect>
          </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <layout class="QGridLayout" name="UserGridLayout">
-           <property name="leftMargin">
-            <number>2</number>
-           </property>
-           <property name="topMargin">
-            <number>2</number>
-           </property>
-           <property name="rightMargin">
-            <number>2</number>
-           </property>
-           <property name="bottomMargin">
-            <number>2</number>
-           </property>
-           <property name="spacing">
-            <number>5</number>
-           </property>
-          </layout>
-         </item>
-         <item alignment="Qt::AlignmentFlag::AlignRight">
-          <widget class="QScrollBar" name="UserVerticalScrollBar">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
+         <layout class="QGridLayout" name="UserGridLayout">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="topMargin">
+           <number>8</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="bottomMargin">
+           <number>8</number>
+          </property>
+          <property name="spacing">
+           <number>12</number>
+          </property>
+         </layout>
+        </widget>
        </widget>
       </item>
      </layout>

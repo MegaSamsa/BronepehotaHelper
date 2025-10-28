@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'armyConstructWidgetKteWmw.ui'
+## Form generated from reading UI file 'armyConstructWidgetNLKCZj.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.9.3
+## Created by: Qt User Interface Compiler version 6.10.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
-    QHBoxLayout, QLabel, QScrollArea, QScrollBar,
-    QSizePolicy, QToolButton, QVBoxLayout, QWidget)
+    QHBoxLayout, QLabel, QScrollArea, QSizePolicy,
+    QToolButton, QVBoxLayout, QWidget)
 import res_rc
 
 class Ui_armyConstructWidget(object):
@@ -25,7 +25,10 @@ class Ui_armyConstructWidget(object):
         if not armyConstructWidget.objectName():
             armyConstructWidget.setObjectName(u"armyConstructWidget")
         armyConstructWidget.resize(802, 634)
-        armyConstructWidget.setStyleSheet(u"#armyConstructWidget{background-color: lightgrey;}")
+        armyConstructWidget.setStyleSheet(u"#armyConstructWidget{background-color: lightgrey;}\n"
+"#FiltersFrame, #AllArmlistMainFrame, #UserArmlistMainFrame{\n"
+"border-radius: 5px;\n"
+"}")
         self.verticalLayout_3 = QVBoxLayout(armyConstructWidget)
         self.verticalLayout_3.setSpacing(5)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -86,6 +89,7 @@ class Ui_armyConstructWidget(object):
         self.HelpToolButton.setObjectName(u"HelpToolButton")
         self.HelpToolButton.setMinimumSize(QSize(26, 26))
         self.HelpToolButton.setMaximumSize(QSize(26, 26))
+        self.HelpToolButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.HelpToolButton.setStyleSheet(u"border: None;")
         icon1 = QIcon()
         icon1.addFile(u":/images/faq.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -107,7 +111,7 @@ class Ui_armyConstructWidget(object):
         self.verticalLayout = QVBoxLayout(self.AllArmlistMainFrame)
         self.verticalLayout.setSpacing(5)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(5, 0, 0, 0)
+        self.verticalLayout.setContentsMargins(5, 0, 5, 2)
         self.AllInfoLabelFrame = QFrame(self.AllArmlistMainFrame)
         self.AllInfoLabelFrame.setObjectName(u"AllInfoLabelFrame")
         self.AllInfoLabelFrame.setMinimumSize(QSize(0, 26))
@@ -136,7 +140,7 @@ class Ui_armyConstructWidget(object):
         self.AllScrollArea.setWidgetResizable(True)
         self.AllScrollAreaWidgetContents = QWidget()
         self.AllScrollAreaWidgetContents.setObjectName(u"AllScrollAreaWidgetContents")
-        self.AllScrollAreaWidgetContents.setGeometry(QRect(0, 0, 783, 289))
+        self.AllScrollAreaWidgetContents.setGeometry(QRect(0, 0, 780, 252))
         self.AllGridLayout = QGridLayout(self.AllScrollAreaWidgetContents)
         self.AllGridLayout.setSpacing(12)
         self.AllGridLayout.setObjectName(u"AllGridLayout")
@@ -158,7 +162,7 @@ class Ui_armyConstructWidget(object):
         self.verticalLayout_2 = QVBoxLayout(self.UserArmlistMainFrame)
         self.verticalLayout_2.setSpacing(5)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(5, 0, 0, 0)
+        self.verticalLayout_2.setContentsMargins(5, 0, 5, 2)
         self.UserInfoLabelFrame = QFrame(self.UserArmlistMainFrame)
         self.UserInfoLabelFrame.setObjectName(u"UserInfoLabelFrame")
         self.UserInfoLabelFrame.setMinimumSize(QSize(0, 26))
@@ -184,29 +188,22 @@ class Ui_armyConstructWidget(object):
 
         self.verticalLayout_2.addWidget(self.UserInfoLabelFrame)
 
-        self.UserArmlistFrame = QFrame(self.UserArmlistMainFrame)
-        self.UserArmlistFrame.setObjectName(u"UserArmlistFrame")
-        self.UserArmlistFrame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.UserArmlistFrame.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_6 = QHBoxLayout(self.UserArmlistFrame)
-        self.horizontalLayout_6.setSpacing(5)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.UserGridLayout = QGridLayout()
-        self.UserGridLayout.setSpacing(5)
+        self.UserScrollArea = QScrollArea(self.UserArmlistMainFrame)
+        self.UserScrollArea.setObjectName(u"UserScrollArea")
+        self.UserScrollArea.setMinimumSize(QSize(0, 250))
+        self.UserScrollArea.setMaximumSize(QSize(16777215, 500))
+        self.UserScrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.UserScrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 780, 252))
+        self.UserGridLayout = QGridLayout(self.scrollAreaWidgetContents)
+        self.UserGridLayout.setSpacing(12)
         self.UserGridLayout.setObjectName(u"UserGridLayout")
-        self.UserGridLayout.setContentsMargins(2, 2, 2, 2)
+        self.UserGridLayout.setContentsMargins(8, 8, 8, 8)
+        self.UserScrollArea.setWidget(self.scrollAreaWidgetContents)
 
-        self.horizontalLayout_6.addLayout(self.UserGridLayout)
-
-        self.UserVerticalScrollBar = QScrollBar(self.UserArmlistFrame)
-        self.UserVerticalScrollBar.setObjectName(u"UserVerticalScrollBar")
-        self.UserVerticalScrollBar.setOrientation(Qt.Orientation.Vertical)
-
-        self.horizontalLayout_6.addWidget(self.UserVerticalScrollBar, 0, Qt.AlignmentFlag.AlignRight)
-
-
-        self.verticalLayout_2.addWidget(self.UserArmlistFrame)
+        self.verticalLayout_2.addWidget(self.UserScrollArea)
 
 
         self.verticalLayout_3.addWidget(self.UserArmlistMainFrame)

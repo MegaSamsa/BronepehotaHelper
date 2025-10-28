@@ -8,6 +8,7 @@ def get_all_armlists(db_connector: DBConnector, order_by: Literal['name', 'cost'
     SELECT id,
            name,
            cost,
+           rank,
            fraction_id,
            image
     FROM armlists

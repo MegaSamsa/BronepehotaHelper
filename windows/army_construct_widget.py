@@ -18,7 +18,14 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
         self.user_army_cost = 0
         
         self.armlists = self.get_armlists_from_db()
-    
+        self.get_sort_list()
+
+    # Заполнение параметров сортировки
+    def get_sort_list(self):
+        self.sort_list = ['Название', 'Армейский ранг', 'Стоимость']
+        self.SortComboBox.addItems(self.sort_list)
+        self.SortComboBox.setCurrentIndex(0)
+
     # Получение армлистов из БД
     def get_armlists_from_db(self):
         return get_all_armlists(self.db_connector, 'cost', is_init=True)
@@ -34,9 +41,9 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
         col_index = 0
         row_content_width_sum = 0
         for armlist in self.armlists:
-            armlist_id, name, cost, fraction_id, image = armlist
+            armlist_id, name, cost, rank, fraction_id, image = armlist
             frac_id, frac_name, frac_color = self.get_fraction_by_id(fraction_id)
-            armlist_frame = ArmlistFrame(armlist_id, name, cost, fraction_id, image, frac_color)
+            armlist_frame = ArmlistFrame(armlist_id, name, cost, rank, fraction_id, image, frac_color)
 
             row_content_width_sum += armlist_frame.width() + self.grid_objects_spacing
             if row_content_width_sum > self.grid_width:

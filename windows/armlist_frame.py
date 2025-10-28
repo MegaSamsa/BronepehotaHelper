@@ -7,14 +7,16 @@ import ast
 
 
 class ArmlistFrame(QFrame, Ui_ArmlistFrame):
-    def __init__(self, armlist_id: int, name: str, cost: int, fraction_id: int, image: bytearray, fraction_color: str):
+    def __init__(self, armlist_id: int, name: str, cost: int, rank: int, fraction_id: int, image: bytearray, fraction_color: str):
         super().__init__()
         self.armlist_id = armlist_id
         self.name = name
         self.cost = cost
+        self.rank = rank
         self.fraction_id = fraction_id
         self.image = image
         self.fraction_color = fraction_color
+        self.darkgrey_color = '#6F7378'
         self.font_id = QFontDatabase.addApplicationFont(":/fonts/BravoRG.otf")
         self.setupUi(self)
         self.setFixedSize(QSize(210, 260))
@@ -32,8 +34,10 @@ class ArmlistFrame(QFrame, Ui_ArmlistFrame):
         custom_font.setLetterSpacing(QFont.SpacingType.AbsoluteSpacing, 1)
         self.NameLabel.setFont(custom_font)
         self.CostLabel.setFont(custom_font)
+        self.RankLabel.setFont(custom_font)
 
         self.NameLabel.setText(self.name)
+        self.RankLabel.setText(f'Ранг {self.rank}')
         self.CostLabel.setText(f'Стоим. {self.cost}')
     
     # Установка изображения
@@ -50,3 +54,4 @@ class ArmlistFrame(QFrame, Ui_ArmlistFrame):
     # Установка цвета в зависимости от фракции
     def set_fraction_color(self):
         self.NameLabel.setStyleSheet(f'background-color: {self.fraction_color}; color: white;')
+        self.ParametersFrame.setStyleSheet(f'QFrame{{background-color: {self.darkgrey_color}; border: none;}} QLabel{{border: 1px solid {self.fraction_color}; color: white;}}')
