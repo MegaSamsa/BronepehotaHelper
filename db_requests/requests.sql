@@ -4,6 +4,7 @@ CREATE TABLE armlists
     id INTEGER NOT NULL PRIMARY KEY,
     name TEXT NOT NULL,
     cost INTEGER NOT NULL,
+    rank INTEGER NOT NULL DEFAULT 1,
     fraction_id INTEGER NOT NULL,
     image BLOB,
     FOREIGN KEY ( fraction_id ) REFERENCES fractions( id )
@@ -14,6 +15,7 @@ INSERT INTO armlists
 (
     name,
     cost,
+    rank,
     fraction_id,
     image
 )
@@ -21,6 +23,7 @@ VALUES
 (
     :name,
     :cost,
+    :rank,
     :fraction_id,
     :image
 )
@@ -29,6 +32,7 @@ VALUES
 SELECT id,
        name,
        cost,
+       rank,
        fraction_id,
        image
 FROM armlists
@@ -38,6 +42,7 @@ WHERE id = :id
 SELECT id,
        name,
        cost,
+       rank,
        fraction,
        image
 FROM armlists

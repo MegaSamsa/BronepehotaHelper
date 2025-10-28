@@ -7,7 +7,7 @@ def image_to_blob(image_path):
         img.save(img_byte_arr, format=img.format or 'PNG')
         return img_byte_arr.getvalue()
 
-blob_data = image_to_blob('img.png')
+blob_data = image_to_blob('image_converter/img.png')
 
-with open('output.txt', 'w', encoding='utf-8') as file:
+with open('image_converter/output.txt', 'w', encoding='utf-8') as file:
     file.write(str(blob_data))
