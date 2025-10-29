@@ -1,8 +1,8 @@
 from PySide6.QtWidgets import QFrame
-from PySide6.QtCore import QSize, QByteArray
-from PySide6.QtGui import QPixmap
-from PySide6.QtGui import QFontDatabase, QFont
+from PySide6.QtCore import QSize, QByteArray, Qt
+from PySide6.QtGui import QPixmap, QFontDatabase, QFont, QMouseEvent
 from windows.ui.ui_armlistFrame import Ui_ArmlistFrame
+from windows.fullscreen_image import FullscreenImage
 import ast
 
 
@@ -55,3 +55,9 @@ class ArmlistFrame(QFrame, Ui_ArmlistFrame):
     def set_fraction_color(self):
         self.NameLabel.setStyleSheet(f'background-color: {self.fraction_color}; color: white;')
         self.ParametersFrame.setStyleSheet(f'QFrame{{background-color: {self.darkgrey_color}; border: none;}} QLabel{{border: 1px solid {self.fraction_color}; color: white;}}')
+
+    # Обработка нажатия мыши
+    def mousePressEvent(self, event: QMouseEvent):
+        if event.button() == Qt.MouseButton.RightButton:
+            fullscreen_image = FullscreenImage(self.image)
+            fullscreen_image.exec()
