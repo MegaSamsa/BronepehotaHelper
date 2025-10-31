@@ -9,7 +9,7 @@ class FullscreenImage(QDialog, Ui_FullscreenImageDialog):
     def __init__(self, image: bytearray):
         super().__init__()
         self.image = image
-        self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint)
+        # self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.setupUi(self)
 
@@ -23,6 +23,7 @@ class FullscreenImage(QDialog, Ui_FullscreenImageDialog):
             pixmap = QPixmap()
             pixmap.loadFromData(byte_array)
             self.ImageLabel.setPixmap(pixmap)
+            self.setFixedSize(pixmap.size())
         else:
             self.ImageLabel.setText("Изображение не найдено")
 

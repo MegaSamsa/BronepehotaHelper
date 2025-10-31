@@ -21,3 +21,12 @@ class DBConnector():
     def set_data(self, request: str):
         self._cursor.execute(request)
         self._connection.commit()
+
+    def execute(self, request):
+        self._cursor.execute(request)
+
+    def fetchall(self):
+        return self._cursor.fetchall()
+    
+    def fetchone(self):
+        return self._cursor.fetchone()

@@ -1,9 +1,11 @@
 from db_requests.db_connector import DBConnector
 from typing import Literal
+from db_requests.class_armlist import Armlist
 
 
 # Получение всех существующих армлистов
-def get_all_armlists(db_connector: DBConnector, order_by: Literal['name', 'cost', 'fraction_id'], is_asc: bool = False, is_init: bool = False):
+def get_all_armlists(db_connector: DBConnector, is_asc: bool = False, is_init: bool = False):
+    armlists = []
     request = f'''
     SELECT id,
            name,
@@ -12,9 +14,21 @@ def get_all_armlists(db_connector: DBConnector, order_by: Literal['name', 'cost'
            fraction_id,
            image
     FROM armlists
-    ORDER BY {order_by} {'ASC' if is_asc else 'DESC'} {', fraction_id' if is_init else ''}
+    ORDER BY cost DESC, fraction_id
     '''
-    return db_connector.get_data(request, 'all')
+    try:
+       db_connector.execute(request)
+       armlists = [Armlist(id=item[0],
+                            name=item[1],
+                            cost=item[2],
+                            rank=item[3],
+                            fraction_id=item[4],
+                            image=item[5])
+                     for item in db_connector.fetchall()]
+    except Exception as ex:
+       print(f"Error: {ex}")
+    
+    return armlists
 
 # Получение определённого армлиста по id
 def get_armlist_by_id(db_connector: DBConnector, armlist_id: int) -> tuple:

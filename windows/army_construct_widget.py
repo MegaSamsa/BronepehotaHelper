@@ -40,10 +40,15 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
         row_index = 0
         col_index = 0
         row_content_width_sum = 0
-        for armlist in self.armlists:
-            armlist_id, name, cost, rank, fraction_id, image = armlist
-            frac_id, frac_name, frac_color = self.get_fraction_by_id(fraction_id)
-            armlist_frame = ArmlistFrame(armlist_id, name, cost, rank, fraction_id, image, frac_color)
+        for item in range(len(self.armlists)):
+            frac_color = self.get_fraction_by_id(self.armlists[item].fraction_id)[2]
+            armlist_frame = ArmlistFrame(self.armlists[item].id,
+                                         self.armlists[item].name,
+                                         self.armlists[item].cost,
+                                         self.armlists[item].rank,
+                                         self.armlists[item].fraction_id,
+                                         self.armlists[item].image,
+                                         frac_color)
 
             row_content_width_sum += armlist_frame.width() + self.grid_objects_spacing
             if row_content_width_sum > self.grid_width:
