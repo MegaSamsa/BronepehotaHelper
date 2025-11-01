@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'armyConstructWidgetNLKCZj.ui'
+## Form generated from reading UI file 'armyConstructWidgetINvotq.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.10.0
 ##
@@ -136,7 +136,7 @@ class Ui_armyConstructWidget(object):
         self.AllScrollArea.setMinimumSize(QSize(0, 250))
         self.AllScrollArea.setMaximumSize(QSize(16777215, 500))
         self.AllScrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.AllScrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.AllScrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.AllScrollArea.setWidgetResizable(True)
         self.AllScrollAreaWidgetContents = QWidget()
         self.AllScrollAreaWidgetContents.setObjectName(u"AllScrollAreaWidgetContents")
@@ -192,7 +192,7 @@ class Ui_armyConstructWidget(object):
         self.UserScrollArea.setObjectName(u"UserScrollArea")
         self.UserScrollArea.setMinimumSize(QSize(0, 250))
         self.UserScrollArea.setMaximumSize(QSize(16777215, 500))
-        self.UserScrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.UserScrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.UserScrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")

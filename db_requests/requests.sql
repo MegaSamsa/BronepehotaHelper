@@ -1,5 +1,5 @@
 -- Создание таблицы армлистов
-CREATE TABLE armlists
+CREATE TABLE IF NOT EXISTS armlists
 (
     id INTEGER NOT NULL PRIMARY KEY,
     name TEXT NOT NULL,
@@ -75,4 +75,16 @@ CREATE TABLE techlists
     name TEXT NOT NULL,
     cost INTEGER NOT NULL,
     rank INTEGER
+)
+
+-- Создание таблицы техлистов
+CREATE TABLE IF NOT EXISTS techlists
+(
+    id INTEGER NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    cost INTEGER NOT NULL,
+    rank INTEGER NOT NULL DEFAULT 1,
+    fraction_id INTEGER NOT NULL,
+    image BLOB,
+    FOREIGN KEY ( fraction_id ) REFERENCES fractions( id )
 )

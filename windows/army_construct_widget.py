@@ -10,6 +10,7 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
     def __init__(self, db_connector: DBConnector, fractions_info: list):
         super().__init__()
         self.setupUi(self)
+        self.summary_list = []
         self.AllGridLayout.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         self.db_connector = db_connector
         self.fractions_info = fractions_info
@@ -17,7 +18,7 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
         self.grid_objects_spacing = 16
         self.user_army_cost = 0
         
-        self.armlists = self.get_armlists_from_db()
+        self.get_armlists_from_db()
         self.get_sort_list()
 
     # Заполнение параметров сортировки
@@ -28,7 +29,11 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
 
     # Получение армлистов из БД
     def get_armlists_from_db(self):
-        return get_all_armlists(self.db_connector, 'cost', is_init=True)
+        self.armlists = get_all_armlists(self.db_connector, 'cost', is_init=True)
+        self.summary_list = self.armlists
+        self.techlists = get_all_techlists(self.db_connector, 'cost', is_init=True)
+        for var in range(len(self.techlists)):
+            self.summary_list.append(self.techlists[var])
     
     # Создание карточек армлистов
     def get_armlists_frames(self):
@@ -40,14 +45,14 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
         row_index = 0
         col_index = 0
         row_content_width_sum = 0
-        for item in range(len(self.armlists)):
-            frac_color = self.get_fraction_by_id(self.armlists[item].fraction_id)[2]
-            armlist_frame = ArmlistFrame(self.armlists[item].id,
-                                         self.armlists[item].name,
-                                         self.armlists[item].cost,
-                                         self.armlists[item].rank,
-                                         self.armlists[item].fraction_id,
-                                         self.armlists[item].image,
+        for item in range(len(self.summary_list)):
+            frac_color = self.get_fraction_by_id(self.summary_list[item].fraction_id)[2]
+            armlist_frame = ArmlistFrame(self.summary_list[item].id,
+                                         self.summary_list[item].name,
+                                         self.summary_list[item].cost,
+                                         self.summary_list[item].rank,
+                                         self.summary_list[item].fraction_id,
+                                         self.summary_list[item].image,
                                          frac_color)
 
             row_content_width_sum += armlist_frame.width() + self.grid_objects_spacing
