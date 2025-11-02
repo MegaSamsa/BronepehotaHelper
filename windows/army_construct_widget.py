@@ -4,6 +4,7 @@ from PySide6.QtCore import QSize, Qt
 from db_requests.db_connector import DBConnector
 from db_requests.armlists_requests import *
 from windows.armlist_frame import ArmlistFrame
+from operator import attrgetter
 
 
 class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
@@ -11,7 +12,6 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
         super().__init__()
         self.setupUi(self)
         self.summary_list = []
-        self.AllGridLayout.setAlignment(Qt.AlignLeft | Qt.AlignTop)
         self.db_connector = db_connector
         self.fractions_info = fractions_info
         self.grid_width = 1024
@@ -34,8 +34,9 @@ class ArmyConstructWidget(QWidget, Ui_armyConstructWidget):
         self.techlists = get_all_techlists(self.db_connector, 'cost', is_init=True)
         for var in range(len(self.techlists)):
             self.summary_list.append(self.techlists[var])
+        self.summary_list.sort(key=attrgetter('cost'), reverse=True)
     
-    # Создание карточек армлистов
+    # Создание карточек армлистов и заполнение сетки
     def get_armlists_frames(self):
         while self.AllGridLayout.count():
             child = self.AllGridLayout.takeAt(0)
